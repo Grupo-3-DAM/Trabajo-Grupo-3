@@ -1,22 +1,8 @@
-
-/** 
- * Proyecto: Juego de la vida.
- * Clase JUnit de prueba automatizada de las características de la clase Nif según el modelo 2.
- * @since: prototipo2
- * @source: TestNif.java 
- * @version: 2.0 - 2017.03.20
- * @author: ajp
- */
-
-package modelo.test;
-
 import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import modelo.Nif;
 
 public class NifTest {
 	private Nif nif1; 
