@@ -1,13 +1,4 @@
-/** Proyecto: Juego de la vida.
- *  Implementa el concepto de Nif según el modelo 2
- *  Se hace validación de datos pero no se gestionan todavía los errores correspondientes.
- *  prototipo1.2
- *  Nif.java 
- */
-
-
 import java.io.Serializable;
-import util.Formato;
 
 public class Nif implements Serializable, Cloneable {
 	private static final long serialVersionUID = 1L;
@@ -24,7 +15,6 @@ public class Nif implements Serializable, Cloneable {
 	public Nif(Nif nif) {
 		this(new String(nif.texto));
 	}
-
 	public String getTexto() {
 		return texto;
 	}
@@ -36,18 +26,15 @@ public class Nif implements Serializable, Cloneable {
 
 	private boolean nifValido(String texto) {
 		if (texto != null) {
-			return	texto.matches(Formato.PATRON_NIF) 
-					&& letraNIFValida(texto);
+			return	texto.matches(Formato.PATRON_NIF);
 		}
 		return false;
 	}
 
-	/**
-	 * Comprueba la validez de la letra de un NIF
-	 * @param texto del NIF
-	 * @return true si la letra es correcta.
+	/*
+	 Comprueba la validez de la letra de un NIF
 	 */
-	private boolean letraNIFValida(String texto) {
+	private boolean letraNIFValida(final String texto) {
 		int numeroNIF = Integer.parseInt(texto.substring(0,8));
 		if (texto.charAt(8) == "TRWAGMYFPDXBNJZSQVHLCKE".charAt(numeroNIF % 23)) {
 			return true;
@@ -60,13 +47,6 @@ public class Nif implements Serializable, Cloneable {
 		return texto;
 	}
 
-	/**
-	 * hashCode() complementa al método equals y sirve para comparar objetos de forma 
-	 * rápida en estructuras Hash. 
-	 * Cuando Java compara dos objetos en estructuras de tipo hash (HashMap, HashSet etc)
-	 * primero invoca al método hashcode y luego el equals.
-	 * @return un número entero de 32 bit.
-	 */
 	@Override
 	public int hashCode() {
 		final int primo = 31;
